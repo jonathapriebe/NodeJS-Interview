@@ -1,10 +1,8 @@
-import supertest from 'supertest';
-
 describe('Customer functional tests', () => {
-  it('Should return a customer by id', async () => {
-    const {body, status} = await supertest(app).get('/customer');
+  it('Should return a customer', async () => {
+    const {body, status} = await global.testRequest.get('/customer');
     expect(status).toBe(200);
-    expect(body).toBe({
+    expect(body).toEqual({
       name: 'João',
       gender: 'Masculino',
       age: 15,
