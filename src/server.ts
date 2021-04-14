@@ -4,6 +4,7 @@ import { Application } from 'express';
 import bodyParser from 'body-parser';
 import { CustomerController } from './controllers/customer';
 import * as database from '@src/database';
+import { CitiesController } from './controllers/cities';
 
 export class SetupServer extends Server {
   constructor(private port = 3000) {
@@ -23,7 +24,8 @@ export class SetupServer extends Server {
 
   private setupControllers(): void {
     const customerController = new CustomerController();
-    this.addControllers([customerController]);
+    const citiesController = new CitiesController();
+    this.addControllers([customerController, citiesController]);
   }
 
   public getApp(): Application {
