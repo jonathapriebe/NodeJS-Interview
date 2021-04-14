@@ -1,4 +1,4 @@
-import {Controller, Get} from '@overnightjs/core';
+import { Controller, Get } from '@overnightjs/core';
 import { Request, Response } from 'express';
 
 @Controller('customer')
@@ -10,7 +10,7 @@ export class CustomerController {
       gender: 'Masculino',
       age: 15,
       dtBirthday: '1988-04-05',
-      idCity: '123'
+      idCity: '123',
     });
   }
 }

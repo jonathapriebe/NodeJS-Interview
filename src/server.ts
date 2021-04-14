@@ -5,7 +5,6 @@ import bodyParser from 'body-parser';
 import { CustomerController } from './controllers/customer';
 
 export class SetupServer extends Server {
-
   constructor(private port = 3000) {
     super();
   }
