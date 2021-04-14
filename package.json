@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-interview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathapriebe/NodeJS-Interview.git"
+  },
+  "keywords": [
+    "nodejs",
+    "typescrit",
+    "jest"
+  ],
+  "author": "Jonatha Priebe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonathapriebe/NodeJS-Interview/issues"
+  },
+  "homepage": "https://github.com/jonathapriebe/NodeJS-Interview#readme"
+}
