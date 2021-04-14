@@ -11,11 +11,11 @@ export class CitiesController {
       const city = new City(req.body);
       const result = await city.save();
       res.status(201).send(result);
-    } catch(error) {
-      if(error instanceof mongoose.Error.ValidationError) {
-        res.status(422).send({error: error.message});
+    } catch (error) {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.status(422).send({ error: error.message });
       } else {
-        res.status(500).send({error: 'Internal Server Error'});
+        res.status(500).send({ error: 'Internal Server Error' });
       }
     }
   }
