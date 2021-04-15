@@ -29,11 +29,12 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Make envfile
-        run: |
-          touch .env
-          echo PORT=${{ secrets.PORT }} >> .env
-          echo MONGO_URL= ${{ secrets.MONGO_URL }} >> .env
-          cat .env
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_PORT: ${{ secrets.PORT }}
+          envkey_MONGO_URL: ${{ secrets.MONGO_URL }}
+          directory: .
+          file_name: .env
 
       - name: Run all tests
         run: yarn test
