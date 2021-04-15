@@ -28,10 +28,13 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Create .env
-        env:
-          ENV: ${{ secrets.env.ENV }}
-        run: echo "$env:ENV" > .env
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_PORT: ${{ secrets.PORT }}
+          envkey_MONGO_URL: ${{ secrets.MONGO_URL }}
+          directory: /
+          file_name: .env
 
       - name: Run all tests
         run: yarn test
