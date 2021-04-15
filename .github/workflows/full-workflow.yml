@@ -29,7 +29,9 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Create .env
-        run: echo ${{ secrets.ENV }} > .env
+        env:
+          PORT: ${{ secrets.PORT }}
+          MONGO_URL: ${{ secrets.MONGO_URL }}
 
       - name: Run all tests
         run: yarn test
