@@ -2,7 +2,7 @@ import './util/module-alias';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
-import { CustomerController } from './controllers/customer';
+import { CustomerController } from './controllers/customers';
 import * as database from '@src/database';
 import { CitiesController } from './controllers/cities';
 
