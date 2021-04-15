@@ -32,8 +32,8 @@ export class CitiesController {
 
       let filter = {};
 
-      filter = name ? {...filter, name} : filter;
-      filter = state ? {...filter, state} : filter;
+      filter = name ? { ...filter, name } : filter;
+      filter = state ? { ...filter, state } : filter;
 
       const result = await City.findOne(filter);
       if (!result) {

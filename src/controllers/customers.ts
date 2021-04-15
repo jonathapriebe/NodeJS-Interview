@@ -9,7 +9,7 @@ export class CustomerController {
   @Post('')
   public async create(req: Request, res: Response): Promise<Response> {
     try {
-      const city = await City.findOne({_id: req.body.city_id});
+      const city = await City.findOne({ _id: req.body.city_id });
       if (!city) {
         return res.status(404).send({ error: 'City not found' });
       }
@@ -37,8 +37,8 @@ export class CustomerController {
 
       let filter = {};
 
-      filter = name ? {...filter, name} : filter;
-      filter = id ? {...filter, _id: id} : filter;
+      filter = name ? { ...filter, name } : filter;
+      filter = id ? { ...filter, _id: id } : filter;
 
       const result = await Customer.findOne(filter);
       if (!result) {
@@ -63,7 +63,7 @@ export class CustomerController {
         return res.status(422).send({ error: 'Name is required' });
       }
 
-      const result = await Customer.findOne({_id: id});
+      const result = await Customer.findOne({ _id: id });
       if (!result) {
         return res.status(404).send({ error: 'Customer not found.' });
       }
@@ -84,7 +84,7 @@ export class CustomerController {
     try {
       const id = req.params.id;
 
-      const result = await Customer.findOne({_id: id});
+      const result = await Customer.findOne({ _id: id });
       if (!result) {
         return res.status(404).send({ error: 'Customer not found.' });
       }

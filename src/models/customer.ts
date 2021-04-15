@@ -29,4 +29,7 @@ const schema = new mongoose.Schema(
 );
 
 interface CustomerModel extends Omit<Customer, '_id'>, Document {}
-export const Customer: Model<CustomerModel> = mongoose.model('Customer', schema);
+export const Customer: Model<CustomerModel> = mongoose.model(
+  'Customer',
+  schema
+);
