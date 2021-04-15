@@ -2,6 +2,10 @@
 
 Aplicação criada para simular cadastro de cidades e clientes.
 
+Foi criado um workflow no github para que a cada push no projeto um job execute os testes e confirme que o projeto não sofreu erros após as alterações de código.
+
+`https://github.com/jonathapriebe/NodeJS-Interview/actions`
+
 Obs: Os arquivos de configuração de acesso a banco devem ficar no arquivo .env na raiz do projeto, um arquivo de exemplo está na raiz do projeto também com o nome .env.sample.
 
 Tecnologias utilizadas:
