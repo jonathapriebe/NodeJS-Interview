@@ -28,5 +28,8 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Create .env
+        run: echo ${{ secrets.ENV }} > .env
+
       - name: Run all tests
         run: yarn test
