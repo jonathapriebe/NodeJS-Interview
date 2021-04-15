@@ -31,7 +31,7 @@ jobs:
       - name: Create .env
         env:
           ENV: ${{ secrets.ENV }}
-        run: echo "$env:SUPER_SECRET" > .env
+        run: echo "$env:ENV" > .env
 
       - name: Run all tests
         run: yarn test
