@@ -5,6 +5,9 @@ import bodyParser from 'body-parser';
 import { CustomerController } from './controllers/customers';
 import * as database from '@src/database';
 import { CitiesController } from './controllers/cities';
+import apiSchema from './api.schema.json';
+import swaggerUi from 'swagger-ui-express';
+
 
 export class SetupServer extends Server {
   constructor(private port = 3000) {
@@ -13,6 +16,7 @@ export class SetupServer extends Server {
 
   public async init(): Promise<void> {
     this.setupExpress();
+    await this.docsSetup();
     this.setupControllers();
     await this.databaseSetup();
   }
@@ -38,6 +42,10 @@ export class SetupServer extends Server {
 
   public async close(): Promise<void> {
     await database.close();
+  }
+
+  private async docsSetup(): Promise<void> {
+    this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiSchema));
   }
 
   public start(): void {

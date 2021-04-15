@@ -1,0 +1,548 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "NODEJS_INTERVIEW",
+    "description": "Documentação da API do teste técnico para Compasso UOL. Aqui você encontra as definições das rotas criadas e que podem ser consumidas, no momento, sem uma autenticação."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/cities": {
+      "post": {
+        "description": "Criando uma cidade",
+        "operationId": "createCity",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/City"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A cidade foi criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Invalid Schema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Buscar Cidade",
+        "operationId": "getCity",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nome da cidade",
+            "example": "Porto Alegre"
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Estado da cidade",
+            "example": "Rio Grande do Sul"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retornando os dados da cidade",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCityResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "City not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customer": {
+      "post": {
+        "description": "Criando um cliente",
+        "operationId": "createCustomer",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A cidade foi criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCustomerResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Invalid Schema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Buscando um cliente",
+        "operationId": "getCustomer",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Identificador do cliente",
+            "example": "60782b34c47fce305ed797ab"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nome do cliente",
+            "example": "João"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "O cliente foi encontrado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCustomerResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Customer not found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Parameter not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Atualizando um cliente",
+        "operationId": "updateCustomer",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Identificador do cliente",
+            "example": "60782b34c47fce305ed797ab",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "O cliente foi atualizado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCustomerResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Customer not found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Invalid Schema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletando um cliente",
+        "operationId": "deleteCustomer",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Identificador do cliente",
+            "example": "60782b34c47fce305ed797ab",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "O cliente foi deletado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Customer deleted"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Customer not found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Invalid Schema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "City": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Porto Alegre"
+          },
+          "state": {
+            "type": "string",
+            "example": "Rio Grande do Sul"
+          }
+        }
+      },
+      "Customer": {
+        "type":"object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "João"
+          },
+          "gender": {
+            "type": "string",
+            "example": "Masculino"
+          },
+          "age": {
+            "type": "number",
+            "example": 33
+          },
+          "dt_birthday": {
+            "type": "date",
+            "example": "1988-01-01"
+          },
+          "city_id": {
+            "type": "string",
+            "example": "605fd197b6149dcfd45273ec"
+          }
+        }
+      },
+      "CustomerUpdate": {
+        "type":"object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "João"
+          }
+        }
+      },
+      "CreateCityResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "605fd197b6149dcfd45273ec"
+          },
+          "name": {
+            "type": "string",
+            "example": "Poro Alegre"
+          },
+          "state": {
+            "type": "string",
+            "example": "Rio Grande do Sul"
+          }
+        }
+      },
+      "CreateCustomerResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "605fd197b6149dcfd45273ec"
+          },
+          "name": {
+            "type": "string",
+            "example": "Poro Alegre"
+          },
+          "gender": {
+            "type": "string",
+            "example": "Masculino"
+          },
+          "age": {
+            "type": "number",
+            "example": 33
+          },
+          "dt_birthday": {
+            "type": "date",
+            "example": "1988-01-01"
+          },
+          "city_id": {
+            "type": "string",
+            "example": "605fd197b6149dcfd45273ec"
+          }
+        }
+      },
+      "GetCityResponse": {
+        "type": "object",
+        "properties": {
+          "orders": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "605fd197b6149dcfd45273ec"
+              },
+              "name": {
+                "type": "string",
+                "example": "Poro Alegre"
+              },
+              "state": {
+                "type": "string",
+                "example": "Rio Grande do Sul"
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
